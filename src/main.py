@@ -17,10 +17,6 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 USER = os.environ['GRASS_USER']
 PASSW = os.environ['GRASS_PASS']
 
-# are they set?
-if USER == '' or PASSW == '':
-    print('Please set GRASS_USER and GRASS_PASS env variables')
-    exit()
 
 #https://gist.github.com/ckuethe/fb6d972ecfc590c2f9b8
 def download_extension(extension_id):
@@ -37,6 +33,11 @@ else:
     print('Downloading extension...')
     download_extension(extensionId)
     print('Downloaded! Installing extension and driver manager...')
+
+# are they set?
+if USER == '' or PASSW == '':
+    print('Please set GRASS_USER and GRASS_PASS env variables')
+    exit()
 
 options = webdriver.ChromeOptions()
 #options.binary_location = '/usr/bin/chromium-browser'
