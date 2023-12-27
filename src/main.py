@@ -31,9 +31,12 @@ def download_extension(extension_id):
         for chunk in r.iter_content(chunk_size=128):
             fd.write(chunk)
 
-print('Downloading extension...')
-download_extension(extensionId)
-print('Downloaded! Installing extension and driver manager...')
+if os.path.exists("grass.crx"):
+    print("Extension grass already exists, skip download...")
+else:
+    print('Downloading extension...')
+    download_extension(extensionId)
+    print('Downloaded! Installing extension and driver manager...')
 
 options = webdriver.ChromeOptions()
 #options.binary_location = '/usr/bin/chromium-browser'
